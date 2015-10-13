@@ -1,10 +1,14 @@
 package SeleniumIntegration.SauceTest;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,11 +18,22 @@ public class POMSignup{
 	
 	
 	private static WebDriver driver = null;
+	private static String sessionId=null;
 	
-	
-	public static void main(String[] args)  {
+	public static void main(String[] args) throws MalformedURLException  {
 		
-		
+		DesiredCapabilities caps = DesiredCapabilities.firefox();
+        caps.setCapability("platform", "Linux");
+        caps.setCapability("version", "41");
+        caps.setCapability("name", "Web Driver demo Test");
+        caps.setCapability("tags", "Tag1");
+        caps.setCapability("build", "v1.0");
+        WebDriver driver = new RemoteWebDriver(
+                new URL("http://abhinav1881:0a0848e0-5d68-46bd-a9e2-8b23ad5baa57@ondemand.saucelabs.com:80/wd/hub"),
+                caps);
+       
+        sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
+        System.out.println("Session Id="+ sessionId);
 	     
 	      driver = new FirefoxDriver();
 	      
