@@ -11,16 +11,33 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterTest;
 
-//Non-TestNG Project
-
-public class POMSignup{
-	
-	
+public class POMSignup {
+  
 	private static WebDriver driver = null;
 	private static String sessionId=null;
 	
-	public static void main(String[] args) throws MalformedURLException{
+	
+	@BeforeTest
+	   public void launchapp() throws MalformedURLException
+	   {
+		 POMSignup ob=new POMSignup();
+	     ob.printSessionId();
+	     driver = new FirefoxDriver();
+	      
+	      
+	      
+	      //implicit wait
+	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	      driver.get("http://socialsofttesthb.com/sign-up");
+	      driver.manage().window().maximize();
+	   }
+    
+	@Test
+	public void Signup() throws MalformedURLException{
 		/*
 		DesiredCapabilities caps = DesiredCapabilities.firefox();
         caps.setCapability("platform", "Linux");
@@ -34,16 +51,7 @@ public class POMSignup{
        */
         //sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
         //System.out.println("Session Id="+ sessionId);
-	     POMSignup ob=new POMSignup();
-	     ob.printSessionId();
-	     driver = new FirefoxDriver();
-	      
-	      
-	      
-	      //implicit wait
-	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	      driver.get("http://socialsofttesthb.com/sign-up");
-	      driver.manage().window().maximize();
+	    
 	      
 	    //Use page Object library now
 	      
@@ -70,7 +78,7 @@ public class POMSignup{
 	    //Explicit wait
 	      WebDriverWait wait=new WebDriverWait(driver,10);
 	      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='toast-container']/div/div")));
-	      driver.close();
+	      //driver.close();
 	      
 	 
 	      
@@ -80,7 +88,7 @@ public class POMSignup{
 	      
 	}
 	
-	private void printSessionId() throws MalformedURLException {
+	    private void printSessionId() throws MalformedURLException {
         DesiredCapabilities caps = DesiredCapabilities.firefox();
         caps.setCapability("platform", "Linux");
         caps.setCapability("version", "41");
@@ -94,7 +102,12 @@ public class POMSignup{
 	    String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", sessionId, "POMSignup");
 	    System.out.println(message);
 	}
-	
-	
-}
+	    @AfterTest
+	    public void terminatetest()
+	    {
+	       driver.close();
+	    }
 
+    
+
+}
