@@ -22,12 +22,12 @@ public class POMSignup {
 	//private static String sessionId=null;
 	public String sessionId;
 	
-	@Parameters("browser")
+	//@Parameters("browser")
 	@BeforeTest
-	   public void launchapp(String browser) throws MalformedURLException
+	   public void launchapp() throws MalformedURLException
 	   {
-		if (browser.equalsIgnoreCase("firefox"))
-	      {
+		//if (browser.equalsIgnoreCase("firefox"))
+	      //{
 	         System.out.println(" Executing on FireFox");
 	       
 		POMSignup ob=new POMSignup();
@@ -39,7 +39,7 @@ public class POMSignup {
 	      driver.get("http://socialsofttesthb.com/sign-up");
 	      driver.manage().window().maximize();
 	      
-	      }
+	      //}
 	   }
     
 	@Test
