@@ -19,7 +19,8 @@ import org.testng.annotations.AfterTest;
 public class POMSignup {
   
 	private static WebDriver driver = null;
-	private static String sessionId=null;
+	//private static String sessionId=null;
+	public String sessionId;
 	
 	@Parameters("browser")
 	@BeforeTest
