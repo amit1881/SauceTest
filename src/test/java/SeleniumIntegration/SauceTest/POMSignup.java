@@ -98,7 +98,7 @@ public class POMSignup {
         DesiredCapabilities caps = DesiredCapabilities.firefox();
         caps.setCapability("platform", "Linux");
         caps.setCapability("version", "41");
-        caps.setCapability("name", "Web Driver demo Test");
+        caps.setCapability("name", "Sauce Demo");
         caps.setCapability("tags", "Tag1");
         caps.setCapability("build", "v1.0");
         driver = new RemoteWebDriver(
