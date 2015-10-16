@@ -5,7 +5,7 @@
    <test name="FirefoxTest">
    
       <classes>
-         <class name="SeleniumIntegration.SauceTest.POMSignupTest" />
+         <class name="SeleniumIntegration.SauceTest.POMSignup" />
       </classes>
    </test>
    
