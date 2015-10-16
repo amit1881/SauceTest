@@ -3,7 +3,7 @@
 <suite name="Suite" parallel="tests">
 
    <test name="FirefoxTest">
-   
+   <parameter name="browser" value="firefox" />
       <classes>
          <class name="SeleniumIntegration.SauceTest.POMSignup" />
       </classes>
