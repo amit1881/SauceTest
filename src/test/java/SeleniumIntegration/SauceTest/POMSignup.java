@@ -11,6 +11,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
@@ -20,20 +21,24 @@ public class POMSignup {
 	private static WebDriver driver = null;
 	private static String sessionId=null;
 	
-	
+	@Parameters("browser")
 	@BeforeTest
-	   public void launchapp() throws MalformedURLException
+	   public void launchapp(String browser) throws MalformedURLException
 	   {
-		 POMSignup ob=new POMSignup();
+		if (browser.equalsIgnoreCase("firefox"))
+	      {
+	         System.out.println(" Executing on FireFox");
+	       
+		POMSignup ob=new POMSignup();
 	     ob.printSessionId();
 	     driver = new FirefoxDriver();
-	      
-	      
 	      
 	      //implicit wait
 	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	      driver.get("http://socialsofttesthb.com/sign-up");
 	      driver.manage().window().maximize();
+	      
+	      }
 	   }
     
 	@Test

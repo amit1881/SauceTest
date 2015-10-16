@@ -2,8 +2,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="tests">
 
-   <test name="SauceTest">
-   
+   <test name="FirefoxTest">
+   <parameter name="browser" value="firefox" />
       <classes>
          <class name="SeleniumIntegration.SauceTest.POMSignup" />
       </classes>
