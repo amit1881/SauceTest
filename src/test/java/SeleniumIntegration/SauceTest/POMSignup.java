@@ -32,7 +32,7 @@ public class POMSignup {
 	       
 		POMSignup ob=new POMSignup();
 	     ob.printSessionId();
-	     driver = new FirefoxDriver();
+	     //driver = new FirefoxDriver();
 	      
 	      //implicit wait
 	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
